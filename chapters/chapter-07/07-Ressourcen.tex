@@ -1,0 +1,24 @@
+\chapter{Planung}
+
+
+\section{Sub heading for Subsection 01}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} % linkslastige Spalten
+
+\begin{table}[htbp]
+    \centering
+    \renewcommand{\arraystretch}{1.4} % Zeilenhöhe erhöhen für Lesbarkeit
+    \begin{tabularx}{\textwidth}{l Y}
+        \toprule
+        \textbf{Kategorie}                        & \textbf{Beschreibung}                                                                           \\
+        \midrule
+        Mikrocontroller / Datenmodul              & Konkrete Hardware festgelegt                                                                    \\
+        Sensoren                                  & Sensordaten lokal ausgelesen                                                                    \\
+        Akku / Stromversorgung                    & Hardware fest verkabelt und verlötet                                                            \\
+        Gehäuse                                   & On-Device Funktionen implementiert                                                              \\
+        Servergerät                               & z.B. Mini-PC oder leistungsfähiger Raspberry Pi zur lokalen Datenverarbeitung und als Webserver \\
+        Access Point / Router                     & Zur Herstellung eines WLAN-Netzwerks zur Kommunikation zwischen Gerät und Server                \\
+        USV (unterbrechungsfreie Stromversorgung) & Für den stabilen Betrieb des Servers und Netzwerks bei Stromausfällen                           \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Table Description}
+\end{table}

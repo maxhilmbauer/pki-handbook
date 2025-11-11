@@ -1,0 +1,52 @@
+\subsection{TLS Server Certificate}
+
+Im letzten Schritt wird das \textbf{TLS-Server-Zertifikat} erstellt. Dieses Zertifikat wird später auf dem Webserver eingebunden und dient der verschlüsselten Kommunikation mit den Clients.
+
+Die Erstellung erfolgt analog zu den vorherigen Zertifikaten.
+Als Signaturzertifikat wird diesmal jedoch das zuvor erzeugte \textbf{Intermediate-Zertifikat} verwendet.
+Unter \emph{Template for the new certificate} kann das vordefinierte \emph{TLS Server}-Template ausgewählt werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{12-TLS-Zertifikat-Source-Tab.png}
+    \caption{TLS Certificate – \emph{Source}-Tab}
+    \label{fig:screenshot12}
+\end{figure}
+
+Im Tab \emph{Subject} werden die Identitätsdaten des Server-Zertifikats eingetragen.
+Als \emph{Common Name (CN)} muss hier die \textbf{IP-Adresse der virtuellen Maschine} angegeben werden, auf der der Webserver (\emph{nginx}) betrieben wird.
+Auch dieses Zertifikat erhält einen \textbf{RSA-Schlüssel} – es soll kein ED25519-Schlüssel verwendet werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{13-TLS-Zertifikat-Subject-Tab.png}
+    \caption{TLS Certificate – \emph{Subject}-Tab}
+    \label{fig:screenshot13}
+\end{figure}
+
+Anschließend wird in den Tab \emph{Extensions} gewechselt, um die Zertifikatseigenschaften festzulegen.
+Unter \emph{X.509v3 Basic Constraints} wird der Typ \textbf{End Entity} ausgewählt, da dieses Zertifikat keine weiteren Zertifikate signiert.
+
+Zusätzlich werden im unteren Bereich der Maske der \emph{Subject Alternative Name (SAN)} sowie der \emph{CRL Distribution Point} eingetragen.
+Wenn im SAN eine IP-Adresse verwendet wird – was hier der Fall ist – muss diese korrekt als IP angegeben werden, also in der Form:
+
+\begin{quote}
+    \texttt{IP:192.168.40.144}
+\end{quote}
+
+und nicht als URI, also \texttt{URI:192.168.40.144}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{14-TLS-Zertifikat-Extension-Tab.png}
+        \caption{TLS Certificate – \emph{Extensions}-Tab}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{15-TLS-Zertifikat-SAT-IP.png}
+        \caption{Subject Alternative Name (IP-Adresse)}
+    \end{subfigure}
+    \caption{TLS Certificate – Einstellungen im \emph{Extensions}-Tab}
+    \label{fig:screenshot1415}
+\end{figure}

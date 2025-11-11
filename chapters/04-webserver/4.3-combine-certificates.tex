@@ -1,0 +1,15 @@
+\section{Kombinieren der Zertifikatskette}
+
+Damit Nginx die vollständige Zertifikatskette (Server- + Intermediate-Zertifikat) bereitstellen kann, werden die beiden Dateien zu einem sogenannten \emph{Full Chain Certificate} zusammengeführt:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+cat /etc/nginx/ssl/server.crt 
+/etc/nginx/ssl/HaMa_Intermediate_CA.crt > 
+/etc/nginx/ssl/server_fullchain.crt
+\end{verbatim}
+\end{tcolorbox}
+
+Die Datei \texttt{server\_fullchain.crt} enthält nun die gesamte Zertifikatskette, wie sie später im Nginx-Konfigurationsfile angegeben wird.
+
+\vspace{1em}

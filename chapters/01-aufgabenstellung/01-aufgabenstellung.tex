@@ -1,0 +1,27 @@
+\chapter{Aufgabenstellung}
+
+Ziel dieser Laborübung ist die praktische Umsetzung einer \textbf{Public Key Infrastructure (PKI)} mithilfe der Software \textbf{XCA} (\emph{X Certificate and Key Management}).
+Dabei sollen die grundlegenden Schritte zur \textbf{Erstellung, Verwaltung und Überprüfung digitaler Zertifikate} nachvollzogen und in einer realen Umgebung getestet werden.
+
+\bigskip
+
+Im Rahmen der Übung wird zunächst eine einfache PKI-Struktur aufgebaut, bestehend aus einem Root-, Intermediate- und Serverzertifikat.
+Anschließend wird die Funktionsweise der \emph{Certificate Chain}, der Widerrufsmechanismen und der Zertifikatsprüfung demonstriert.
+
+\bigskip
+In einer virtuellen Linux-Umgebung wird ein \textbf{Webserver} (z.\,B. \emph{Nginx}) installiert und mit dem erzeugten Serverzertifikat konfiguriert.
+Auf dem Client-Rechner werden anschließend die notwendigen Zertifikate importiert, um die \textbf{Client-Server-Kommunikation über TLS} zu testen.
+
+\section*{Erweiterte Aufgabe im Klassenverbund}
+Im weiteren Verlauf der Übung wird das Verhalten verschiedener Webbrowser bei widerrufenen Zertifikaten untersucht:
+\begin{itemize}
+    \item Microsoft Edge
+    \item Mozilla Firefox
+    \item Google Chrome
+    \item \textbf{Apple Safari}
+\end{itemize}
+
+Das Ziel besteht darin, den Zertifikatsfehler zu erkennen und durch das Erstellen sowie Importieren neuer Zertifikate zu beheben.
+
+\bigskip
+Die Vorgehensweise, die Ergebnisse und die gewonnenen Erkenntnisse im Laborbericht dokumentiert.

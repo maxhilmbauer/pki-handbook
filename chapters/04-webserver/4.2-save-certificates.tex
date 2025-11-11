@@ -1,0 +1,19 @@
+\section{Speichern der Zertifikate}
+
+Nachdem die Zertifikate und der Private Key aus XCA exportiert wurden, müssen diese auf den Webserver übertragen und an einem geeigneten Ort gespeichert werden.
+Hierzu wird ein Verzeichnis \emph{ssl} im Nginx-Konfigurationsverzeichnis erstellt:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+matteo@kali-03:/etc/nginx$ sudo mkdir ssl
+\end{verbatim}
+\end{tcolorbox}
+
+Die Dateien können anschließend überprüft werden:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+matteo@kali-03:/etc/nginx/ssl$ ls
+HaMa_Intermediate_CA.crt  server.crt  server.key
+\end{verbatim}
+\end{tcolorbox}

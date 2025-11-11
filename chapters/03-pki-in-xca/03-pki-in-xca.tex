@@ -1,0 +1,78 @@
+\chapter{Konfiguration einer PKI in XCA}
+
+\section{Installation von XCA}
+
+Für die Konfiguration der Public Key Infrastructure (PKI) wird eine virtuelle Maschine mit \textbf{Kali Linux} verwendet.
+In der Regel ist \textbf{XCA} (\emph{X Certificate and Key Management}) bereits in der Standardinstallation von Kali Linux enthalten.
+Sollte dies nicht der Fall sein, kann die Installation über die Paketverwaltung erfolgen:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+sudo apt update
+sudo apt install xca
+\end{verbatim}
+\end{tcolorbox}
+
+
+Nach der Installation kann XCA über das Anwendungsmenü oder den Terminalbefehl \texttt{xca} gestartet werden.
+
+\bigskip
+
+\section{Erstellen der Zertifikatsdatenbank}
+
+Um Zertifikate verwalten und signieren zu können, muss zunächst eine neue \textbf{Zertifikatsdatenbank} erstellt werden.
+Dies erfolgt in XCA über das Menü:
+
+\begin{quote}
+    \texttt{File → New Database}
+\end{quote}
+
+Im folgenden Dialog wird der Datenbank ein aussagekräftiger Name gegeben sowie ein Speicherort festgelegt.
+Das Passwortfeld bleibt leer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{01-database.png}
+    \caption{Certificate Database created}
+    \label{fig:screenshot01}
+\end{figure}
+
+Sobald die Datenbank angelegt wurde, kann mit der Erstellung der obersten Instanz begonnen werden: dem \textbf{Root-Zertifikat}.
+
+\bigskip
+
+\section{Erstellung der benötigten Zertifikate}
+
+Im nächsten Schritt werden die für die PKI-Struktur erforderlichen Zertifikate erzeugt.
+Dazu gehören:
+
+\begin{enumerate}[label=\alph*)]
+    \item ein \textbf{Root-Zertifikat} (selbstsigniert),
+    \item ein \textbf{Intermediate-Zertifikat}, das vom Root-Zertifikat signiert wird,
+    \item ein \textbf{Server-Zertifikat (TLS)}, das vom Intermediate-Zertifikat signiert wird.
+\end{enumerate}
+
+Alle Zertifikate werden mit modernen \textbf{RSA}-Schlüsseln erstellt (nicht mit einem ED25519-Schlüssel)
+
+\bigskip
+
+Die detaillierte Vorgehensweise zur Erstellung der einzelnen Zertifikate wird in den folgenden Abschnitten beschrieben:
+
+\newpage
+\input{chapters/03-pki-in-xca/root-ca.tex}
+
+\newpage
+\input{chapters/03-pki-in-xca/intermediate-cert.tex}
+
+\newpage
+\input{chapters/03-pki-in-xca/tls-cert.tex}
+
+\newpage
+Nachdem alle drei Zertifikate erstellt wurden, sollte die Zertifikatsdatenbank in XCA wie in Abbildung \ref{fig:screenshot16} aussehen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{16-All-Certificates.png}
+    \caption{All Certificates in Certificate-Database}
+    \label{fig:screenshot16}
+\end{figure}

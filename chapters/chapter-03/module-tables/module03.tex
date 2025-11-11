@@ -1,0 +1,17 @@
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{table}[htbp]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{c Y Y c Y}
+        \toprule
+        \textbf{Number} & \textbf{Name}                         & \textbf{Beschreibung}                                                                                 & \textbf{Datum} & \textbf{Ergebnis}                                                                                                \\
+        \midrule
+        3.1             & Technologien und Komponenten bestimmt & Serverkomponenten und Technologien festlegen, die am Server verwendet werden                          & 27.06.2025     & Dokument mit den festgelegten Technologien und Komponenten                                                       \\
+        3.2             & Netzwerkinfrastruktur steht           & Es soll ein Servergerät mit festgelegten Technologien für die Netzwerkinfrastruktur aufgesetzt werden & 08.08.2025     & Servergerät mit festgelegten Technologien für die Netzwerkinfrastruktur                                          \\
+        3.3             & Netzkommunikation steht               & Daten von Clients werden empfangen und in eine DB eingeordnet                                         & 19.09.2025     & Erfolgreiche Kommunikation im Netzerk ist vorhanden, Client soll mit dem Server erfolgreich kommunizieren können \\
+        3.4             & Remote-Services funktionieren         & Sicherung der Datenbanken in der Cloud, Remote-Erreichbarkeit der WebApp                              & 19.12.2025     & Die Daten werden erfolgreich in de Cloud gesichert und die App ist Remote erreichbar                             \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Meilensteine des Moduls 3}
+\end{table}

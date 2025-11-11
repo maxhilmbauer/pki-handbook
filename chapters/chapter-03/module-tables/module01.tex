@@ -1,0 +1,17 @@
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} % linkslastige Spalten
+
+\begin{table}[htbp]
+    \centering
+    \renewcommand{\arraystretch}{1.4} % Zeilenhöhe erhöhen für Lesbarkeit
+    \begin{tabularx}{\textwidth}{c Y Y c Y}
+        \toprule
+        \textbf{Number} & \textbf{Name}                        & \textbf{Beschreibung}                                                                                                                                                                                                                         & \textbf{Datum} & \textbf{Ergebnis}                                                                                                  \\
+        \midrule
+        1.1             & Konkrete Hardware festgelegt         & Für alle Komponenten und Sensoren ein konkretes Modell bestimmen, und auch schon bestimmt woher man dieses bekommt.                                                                                                                           & 27.06.2025     & Dokument mit festgelegten Komponenten                                                                              \\
+        1.2             & Sensordaten lokal ausgelesen         & Alle Sensoren sollen ihre Messwerte akkurat und in Echtzeit lokal ausgeben                                                                                                                                                                    & 29.08.2025     & Sensoren richtig angeschlossen, Sensoren kalibriert, Sensordaten lokal verfügbar                                   \\
+        1.3             & Hardware fest verkabelt und verlötet & Hardware ist nicht mehr über ein Patch-Panel, sondern fest miteinander verbunden und verlötet                                                                                                                                                 & 12.09.2025     & Fest verlötete und verkabelte Hardware                                                                             \\
+        1.4             & On-Device Funktionen implementiert   & Alle Funktionen die das Gerät lokal hat sollen implementiert sein und funktionieren. Dazu zählen unter anderem: Alle Displays zeigen dementsprechende Werte, Warnungen und Signale an. Optische und Akustische Warnung bei Extremwerten, usw. & 19.12.2025     & Gerät selbst ist lokal komplett funktionsfähig und Modul-Anforderungen sind umgesetzt. Puffermöglichkeit umgesetzt \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Description of Table}
+\end{table}

@@ -1,0 +1,40 @@
+\section{Import der Root-CA und des Intermediate-Zertifikats}
+Damit der Client dem Server-Zertifikat vertraut, muss die Root-Zertifizierungsstelle (Root CA) lokal importiert werden.
+
+\begin{enumerate}
+    \item Öffnen der Anwendung \textbf{Keychain Access} (Schlüsselbundverwaltung).
+    \item Wechsel in den Schlüsselbund \textbf{System}.
+    \item Import der Datei \texttt{HaMa\_Root\_CA.crt}.
+\end{enumerate}
+
+\begin{quote}
+    \texttt{File → Import Items → Root CA \& Intermediate CA auswählen}
+\end{quote}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{20-import-into-keychain.png}
+    \caption{Import Root CA into Keychain Access}
+    \label{fig:screenshot20}
+\end{figure}
+
+Anschließend muss das Zertifikat als vertrauenswürdig markiert werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{21-ca-trust.png}
+    \caption{Set Trust Settings for Root CA}
+    \label{fig:screenshot20}
+\end{figure}
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white, title=Hinweis]
+    Der Import des Intermediate-Zertifikats ist optional, da es beim Verbindungsaufbau vom Server mitgeliefert wird.
+    Dennoch empfiehlt sich der Import, um Zertifikatswarnungen im Browser zu vermeiden.
+\end{tcolorbox}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{22-intermediate-set-trust.png}
+    \caption{Set Trust Settings for Intermediate Zertificate}
+    \label{fig:screenshot20}
+\end{figure}

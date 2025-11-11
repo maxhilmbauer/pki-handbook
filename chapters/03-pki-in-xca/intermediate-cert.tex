@@ -1,0 +1,41 @@
+\subsection{Intermediate Certificate}
+
+Das \textbf{Intermediate-Zertifikat} wird analog zum Root-Zertifikat erstellt. Der entscheidende Unterschied besteht darin, dass es \emph{nicht selbstsigniert} ist, sondern vom Root-Zertifikat signiert wird.
+
+Im Dialogfeld für die Signatur wird unter \emph{Signing} die Option \emph{Use this Certificate for signing} ausgewählt und anschließend das zuvor erstellte Root-Zertifikat als Aussteller angegeben.
+Als Vorlage kann unter \emph{Template for the new certificate} das \emph{CA}-Template verwendet werden, da das Intermediate-Zertifikat ebenfalls als Zertifizierungsstelle fungiert.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{08-intermediate-source-tab.png}
+    \caption{Intermediate Certificate – \emph{Source}-Tab}
+    \label{fig:screenshot08}
+\end{figure}
+
+Im Tab \emph{Subject} werden die Identitätsinformationen für das Intermediate-Zertifikat eingetragen.
+Hier wird ein neuer privater Schlüssel erzeugt — wichtig ist, dass dieser als \textbf{RSA-Schlüssel} erstellt wird (kein ED25519).
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{09-Intermediate-Source-Tab.png}
+        \caption{Intermediate Certificate – Subject Information}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{10-Intermediate-Private-Key.png}
+        \caption{Generated RSA Private Key}
+    \end{subfigure}
+    \caption{Configuration of the Intermediate Certificate – \emph{Subject}-Tab}
+    \label{fig:screenshot910}
+\end{figure}
+
+Anschließend wird – wie beim Root-Zertifikat – in den Tab \emph{Extensions} gewechselt, um den Zertifikatstyp festzulegen.
+Da das Intermediate-Zertifikat ebenfalls eine Zertifizierungsstelle darstellt, wird hier die Option \emph{Certification Authority} ausgewählt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{11-Intermediate-Extension.png}
+    \caption{Intermediate Certificate – \emph{Extensions}-Tab}
+    \label{fig:screenshot11}
+\end{figure}

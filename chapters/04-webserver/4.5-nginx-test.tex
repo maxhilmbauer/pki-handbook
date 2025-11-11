@@ -1,0 +1,19 @@
+\section{Testen und Starten von Nginx}
+
+Nach dem Bearbeiten der Konfiguration sollte die Syntax geprüft werden:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+matteo@kali-03:/etc/nginx/ssl$ sudo nginx -t 
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+\end{verbatim}
+\end{tcolorbox}
+
+Anschließend kann der Webserver gestartet werden:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+matteo@kali-03:/etc/nginx/ssl$ sudo systemctl start nginx
+\end{verbatim}
+\end{tcolorbox}

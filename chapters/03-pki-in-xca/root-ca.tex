@@ -1,0 +1,58 @@
+\subsection{Root CA Certificate (Certificate Authority)}
+
+Um ein Root-CA-Zertifikat zu erstellen, wechselt man zunächst in den \emph{Certificates}-Tab und klickt auf:
+\begin{quote}
+    \texttt{Certificates → New Certificate}
+\end{quote}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{02-Certificates-Tab.png}
+    \caption{Creating a Root CA Certificate}
+    \label{fig:screenshot02}
+\end{figure}
+
+Daraufhin öffnet sich das Fenster zur Konfiguration des neuen Zertifikats.
+Im \emph{Source}-Tab muss unter \emph{Signing} die Option \emph{"Create a self-signed certificate"} aktiviert werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{03-create-ca-certificate.png}
+    \caption{Creating a Root CA Certificate – \emph{Source}-Tab}
+    \label{fig:screenshot03}
+\end{figure}
+
+Anschließend wechselt man in den \emph{Subject}-Tab, um die Informationen für das Zertifikat einzugeben.
+In diesem Schritt wird außerdem der zugehörige Private Key erstellt. Im unteren Bereich des \emph{Subject}-Tabs befindet sich die Sektion \emph{Private Key}. Hier wird ein neuer Schlüssel mit den unten dargestellten Einstellungen generiert.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{04-ca-subject-tab.png}
+        \caption{Information of the CA Certificate}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{05-CA-Private-Key.png}
+        \caption{Private Key for CA Certificate}
+    \end{subfigure}
+    \caption{Creating a Root CA Certificate – \emph{Subject}-Tab}
+    \label{fig:screenshot45}
+\end{figure}
+
+Im nächsten Schritt wird im \emph{Extensions}-Tab der Zertifikatstyp festgelegt. Zusätzlich muss der \emph{x509v3 CRL Distribution Point} eingetragen werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{06-CA-Extension-Tab.png}
+    \caption{Creating a Root CA Certificate – \emph{Extension}-Tab}
+    \label{fig:screenshot06}
+\end{figure}
+
+Nach erfolgreicher Erstellung erscheint das neue Root-Zertifikat in der Datenbank unter \emph{Certificates}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{07-CA-in-DB.png}
+    \caption{Root-CA Certificate in Database}
+    \label{fig:screenshot07}
+\end{figure}

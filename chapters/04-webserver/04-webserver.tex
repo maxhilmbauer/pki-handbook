@@ -1,0 +1,32 @@
+\chapter{Konfiguration des Webservers}
+
+\section{Übersicht}
+Als Webserver wird in einer separaten virtuellen Maschine \textbf{Nginx} verwendet.
+Ziel ist es, den zuvor erstellten Server Private Key, das Server-Zertifikat sowie das Intermediate-Zertifikat in die Nginx-Konfiguration zu integrieren, um einen sicheren Zugriff über \textbf{HTTPS} zu ermöglichen.
+
+In den folgenden Abschnitten wird beschrieben:
+\begin{itemize}
+    \item wie die Zertifikate und Schlüssel aus XCA exportiert werden,
+    \item wie diese im System abgelegt und kombiniert werden,
+    \item und wie Nginx für den Betrieb mit TLS/SSL konfiguriert wird.
+\end{itemize}
+
+\vspace{1em}
+
+\input{chapters/04-webserver/4.1-export-certificates.tex}
+
+\vspace{1em}
+
+\input{chapters/04-webserver/4.2-save-certificates.tex}
+
+\vspace{1em}
+
+\input{chapters/04-webserver/4.3-combine-certificates.tex}
+
+\vspace{1em}
+
+\input{chapters/04-webserver/4.4-nginx-config.tex}
+
+\vspace{1em}
+
+\input{chapters/04-webserver/4.5-nginx-test.tex}

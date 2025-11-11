@@ -1,0 +1,74 @@
+\section{Troubleshooting}
+Im Verlauf des Tests traten mehrere Fehler auf, die im Folgenden analysiert und behoben wurden.
+
+\subsection{TLS Handshake Failure}
+\textbf{Fehler:}
+\begin{verbatim}
+sslv3 alert handshake failure
+\end{verbatim}
+
+\textbf{Ursache:}
+Nginx unterstützte standardmäßig nur eine begrenzte Auswahl an Protokollen und Cipher-Suites.
+Der verwendete Schlüsseltyp (ED25519) war nicht mit allen Clients kompatibel.
+
+\textbf{Lösung:}
+In der Nginx-Konfiguration wurden die unterstützten Protokolle angepasst:
+\begin{verbatim}
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_ciphers   HIGH:!aNULL:!MD5;
+\end{verbatim}
+
+Nach einem Neustart von Nginx konnte der Handshake erfolgreich abgeschlossen werden.
+
+\subsection{Ungültige Zertifikatskette}
+\textbf{Fehler:}
+\begin{verbatim}
+unable to verify the first certificate
+\end{verbatim}
+
+\textbf{Ursache:}
+Das Intermediate-Zertifikat wurde auf dem Server nicht korrekt verknüpft.
+
+\textbf{Lösung:}
+Server- und Intermediate-Zertifikat wurden zu einer vollständigen Kette kombiniert:
+\begin{verbatim}
+sudo cat server.crt HaMa_Intermediate_CA.crt \
+    > /etc/nginx/ssl/server_fullchain.crt
+\end{verbatim}
+Anschließend wurde in der Nginx-Konfiguration das Fullchain-Zertifikat referenziert:
+\begin{verbatim}
+ssl_certificate /etc/nginx/ssl/server_fullchain.crt;
+\end{verbatim}
+
+\subsection{Cipher-Fehler im Browser}
+\textbf{Fehler:}
+Safari und Chrome lehnten die Verbindung mit ED25519-Schlüsseln ab.
+
+\textbf{Ursache:}
+Nicht alle Browser unterstützen ED25519 für TLS-Zertifikate.
+
+\textbf{Lösung:}
+Es wurde ein neues Server-Zertifikat mit RSA-Schlüsseln erzeugt.
+Anschließend funktionierte die Verbindung ohne Fehlermeldung.
+
+\subsection{Falscher Subject Alternative Name (SAN)}
+\textbf{Fehler:}
+Der Browser zeigte „Zertifikat ungültig für diese Website“ an.
+
+\textbf{Ursache:}
+Beim Erstellen des Zertifikats wurde im Feld \texttt{subjectAltName} eine \texttt{URI} anstelle einer \texttt{IP}-Adresse eingetragen.
+
+\textbf{Lösung:}
+Das Zertifikat wurde neu generiert mit:
+\begin{verbatim}
+subjectAltName = IP:192.168.40.144
+\end{verbatim}
+
+\section{Ergebnis}
+Nach Durchführung aller Korrekturen wurde die Verbindung erfolgreich hergestellt.
+Der Browser erkannte das Zertifikat als vertrauenswürdig, die HTTPS-Verbindung wurde ohne Warnmeldungen aufgebaut, und der Datenverkehr war vollständig verschlüsselt.
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!50!black, title=Ergebnis]
+    Die Client-Server-Verbindung über HTTPS war erfolgreich.
+    Das Zertifikat wurde als gültig und vertrauenswürdig erkannt.
+\end{tcolorbox}

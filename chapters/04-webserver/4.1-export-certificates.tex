@@ -1,0 +1,41 @@
+\section{Export der Zertifikate und Schlüssel}
+Aus der XCA-Datenbank werden folgende Dateien exportiert:
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Server-Zertifikat} (\texttt{server.crt})
+    \item \textbf{Server Private Key} (\texttt{server.key})
+    \item \textbf{Intermediate-Zertifikat} (\texttt{HaMaIntermediateCA.crt})
+\end{enumerate}
+
+Beim Export ist darauf zu achten, dass:
+\begin{itemize}
+    \item das Zertifikat im Format \texttt{PEM (*.crt)} gespeichert wird,
+    \item der Private Key im unverschlüsselten Format \texttt{PEM (*.key)} exportiert wird,
+    \item und die Dateinamen klar und konsistent benannt sind.
+\end{itemize}
+
+Zertifikate exportiert man in XCA folgendermaßen:
+\begin{quote}
+    \texttt{Click on Certificate → Export}
+\end{quote}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{17-Export-Server-Certificate.png}
+    \caption{Export Server Certificate}
+    \label{fig:screenshot17}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{18-Export-Server-Private-Key.png}
+    \caption{Export Server Private Key}
+    \label{fig:screenshot18}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{19-Export-Intermediate-Certificate.png}
+    \caption{Export Intermediate Certificate}
+    \label{fig:screenshot19}
+\end{figure}

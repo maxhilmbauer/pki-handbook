@@ -1,0 +1,32 @@
+\section{Anpassen der Nginx-Konfiguration}
+
+Die Standardkonfiguration von Nginx befindet sich in:
+
+\begin{quote}
+    \texttt{/etc/nginx/sites-available/default}
+\end{quote}
+
+Diese Datei wird mit Root-Rechten geöffnet und um die SSL-Parameter ergänzt:
+
+\begin{tcolorbox}[colback=black!3!white, colframe=black!60!white]
+    \begin{verbatim}
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	
+	# SSL configuration
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+	
+	ssl_protocols TLSV1.2 TLSv1.3;
+	ssl_ciphers HIGH:! aNULL: !MD5;
+	ssl_prefer_server_ciphers on;
+	ssl_certificate /etc/nginx/ssl/server_fullchain.crt;
+	ssl_certificate_key /etc/nginx/ssl/tls-server.key;
+	...
+\end{verbatim}
+\end{tcolorbox}
+
+
+
+Achtung: Jeder Block und jede Direktive muss mit einem \textbf{Strichpunkt (;)} abgeschlossen werden, da sonst ein Syntaxfehler auftritt.
